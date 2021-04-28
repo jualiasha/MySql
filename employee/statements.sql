@@ -23,4 +23,17 @@ select max(salary) as max from employee;
 select max(salary)-min(salary) as dif from employee;
 
 
-select firstname, lastname, salary, case when salary>6000 then 'topworker' else '-'end as notes from employee order by salary desc, lastname,firstname;
+select firstname, lastname, salary, case when salary>6000 then 'topworker' else '-' end as notes from employee order by salary desc, lastname,firstname;
+
+insert into employee(employeeId, firstname, lastname) values(10, 'Will', 'Jones');
+insert into employee values(11, 'Jesse', 'Jones', 'ict', null);
+insert into employee values(12, 'Peter', 'Bond', 'secr', 6000);
+
+select firstname,lastname,salary,case 
+when salary=(select min(salary) from employee) then 'min'
+when salary=(select max(salary) from employee) then 'max'
+when salary is null then 'missing'
+else ' ' end as minmax
+from employee order by lastname asc;
+
+update employee set salary=4000 where firstname='Will';

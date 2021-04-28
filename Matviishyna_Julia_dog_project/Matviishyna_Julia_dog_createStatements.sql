@@ -1,6 +1,6 @@
 drop database if exists dogdb;
 create database dogdb;
-create table dogDB.dog(
+create table dogdb.dog(
     number integer not null primary key,
     name varchar(25) not null,
     weightKg integer not null,
@@ -10,7 +10,7 @@ create table dogDB.dog(
 );
 drop user if exists 'charlie'@'localhost';
 create user 'charlie'@'localhost' identified by 'wpBaeSjT';
-grant all privileges on dogDB.* to 'mary'@'localhost';
+grant all privileges on dogdb.* to 'charlie'@'localhost';
 
 insert into dogdb.dog values(1, 'Canine The III', 10, 50, 2015);
 insert into dogdb.dog values(6, 'Hound of Basker W.I.11e', 25, 35, 1990);
