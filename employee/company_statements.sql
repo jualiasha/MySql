@@ -40,4 +40,22 @@ from employee join department on departmentNumber=departmentId order by salary d
 select * from department join employee on departmentNumber=departmentId;
 
 select * from department left join employee on departmentNumber=departmentId;
- 
+
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId; 
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId order by departmentName desc;
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId order by numberofemployees asc;
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId order by numberofemployees asc, departmentName desc;
+select departmentName, count(employeeId) as numberofemployees from department join employee on departmentNumber=departmentId group by departmentId order by numberofemployees asc, departmentName desc;
+
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId having numberofemployees=0;
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId having numberofemployees>1;
+select departmentName, count(employeeId) as numberofemployees from department left join employee on departmentNumber=departmentId group by departmentId having numberofemployees>1 order by numberofemployees asc;
+
+select departmentName, count(employeeId) as numberofemployees,
+min(salary) as min, max(salary) as max, avg(salary) as avgsalary
+from department left join employee on departmentNumber=departmentId group by departmentId having numberofemployees>1 order by numberofemployees asc;
+
+select departmentName, sum(salary) as sumofsalary
+from department left join employee on departmentNumber=departmentId group by departmentId ;
+
+mysqldump -u root -p --databases companydb > companybackup.sql /*as administrator in powershell*/
