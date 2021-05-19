@@ -7,7 +7,7 @@ create table department(
     departmentId integer not null primary key,
     departmentName varchar(20) not null,
     departmentFloor varchar(15) not null
-
+    
 );
 
 create table employee(
